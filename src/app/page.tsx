@@ -1,6 +1,8 @@
 
 export default function Home() {
   return (
-    <h1>Homepage</h1>
+    <main className="flex justify-center items-center">
+      <h1 className="my-5 text-3xl font-bold">Gift Card Tracker</h1>
+    </main>
   )
 }
