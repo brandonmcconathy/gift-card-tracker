@@ -28,9 +28,6 @@ export default function Home() {
     setLoading(false)
   }, [])
 
-  console.log(places)
-  console.log(cards)
-
   return (
     <main className="flex flex-col justify-center items-center">
       <h1 className="text-white mt-5 mb-10 text-3xl font-bold">Gift Card Tracker</h1>

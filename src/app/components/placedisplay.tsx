@@ -13,8 +13,6 @@ export default function PlaceDisplay(props:any) {
 }
 
 function CardDisplay(card:any) {
-
-  console.log(card.card)
   return(
     <div className="flex justify-center gap-2">
       <h1>{card.card.id}:</h1>
