@@ -4,7 +4,7 @@ export default function PlaceDisplay(props:any) {
 
   return(
     <div className="bg-red-200 w-11/12 pb-5 rounded-xl box-pop">
-      <h1 className="text-center my-4 text-lg font-semibold">{place}</h1>
+      <h1 className="text-center my-4 text-xl font-semibold">{place}</h1>
       <div className="flex flex-col">
         {cards.cards.map((card:any) => <CardDisplay card={card} key={card.id} />)}
       </div>
