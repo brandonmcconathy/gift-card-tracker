@@ -35,7 +35,7 @@ export default function Home() {
     <main className="flex flex-col justify-center items-center">
       <h1 className="my-5 text-3xl font-bold">Gift Card Tracker</h1>
       {loading ? <h1>loading...</h1> : 
-      <div>
+      <div className="w-1/2 flex flex-col justify-center items-center gap-8">
         {places.map((place, index) => <PlaceDisplay place={place} cards={cards[index]} key={place} />)}
       </div>
       }
