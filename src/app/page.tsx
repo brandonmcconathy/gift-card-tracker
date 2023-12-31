@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <main className="flex flex-col justify-center items-center">
       <h1 className="text-white mt-5 mb-10 text-3xl font-bold">Gift Card Tracker</h1>
-      <button>Add New Gift Card</button>
+      <button className="mb-10 py-2 px-3 bg-amber-200 rounded-xl text-lg font-semibold transition duration-500 hover:bg-amber-400">Add New Gift Card</button>
       {loading ? <h1 className="text-white text-2xl mt-12">loading...</h1> : 
       <div className="w-1/2 flex flex-col justify-center items-center gap-8">
         {places.map((place, index) => <PlaceDisplay place={place} cards={cards[index]} key={place} />)}
