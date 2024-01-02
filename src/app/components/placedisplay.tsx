@@ -3,7 +3,7 @@ export default function PlaceDisplay(props:any) {
   const {place, cards} = props
 
   return(
-    <div className="bg-amber-100 w-11/12 pb-5 rounded-xl box-pop">
+    <div className="bg-amber-200 w-11/12 pb-5 rounded-xl box-pop">
       <h1 className="text-center my-4 text-xl font-bold">{place}</h1>
       <div className="flex flex-col gap-3">
         {cards.cards.map((card:any) => <CardDisplay card={card} key={card.id} />)}
