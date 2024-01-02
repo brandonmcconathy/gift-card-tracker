@@ -1,6 +1,6 @@
 'use client'
 
-import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore"
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { useState } from "react"
 import { db } from "../../../lib/firebase"
 import Link from "next/link"
@@ -29,7 +29,8 @@ export default function Add() {
         cards: arrayUnion({id: card.id, amount: card.amount})
       })
     } else {
-
+      const cards = [{id: card.id, amount: card.amount}]
+      await setDoc(doc(db, 'data', card.place), {cards})
     }
   }
 
