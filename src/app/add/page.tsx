@@ -18,6 +18,7 @@ export default function Add() {
     event.preventDefault()
     AddDBData(card)
     setCard({place: '', id: '', amount: ''})
+    alert('Card Added')
   }
 
   const AddDBData = async (card:any) => {

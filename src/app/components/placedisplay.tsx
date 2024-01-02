@@ -1,3 +1,9 @@
+'use client'
+
+import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore"
+import { db } from "../../../lib/firebase"
+import { useEffect, useState } from "react"
+
 export default function PlaceDisplay(props:any) {
 
   const {place, cards} = props
@@ -6,13 +12,26 @@ export default function PlaceDisplay(props:any) {
     <div className="bg-amber-200 w-11/12 pb-5 rounded-xl box-pop">
       <h1 className="text-center my-4 text-xl font-bold">{place}</h1>
       <div className="flex flex-col gap-3">
-        {cards.cards.map((card:any) => <CardDisplay card={card} key={card.id} />)}
+        {cards.cards.map((card:any, index:any) => <CardDisplay card={card} index={index} key={card.id} />)}
       </div>
     </div>
   )
 }
 
-function CardDisplay(card:any) {
+function CardDisplay(card:any, index:any) {
+
+  const [data, setData] = useState([])
+
+  // console.log(place)
+
+  // useEffect(() => {
+  //   const getDBData = async () => {
+  //     const data = await getDoc(doc(db, 'data', place))
+  //     console.log(data.data())
+  //   }
+  //   getDBData()
+  // },[])
+
   return(
     <div className="flex justify-center items-center gap-10 text-lg">
       <div className="flex justify-center gap-2 font-semibold">
