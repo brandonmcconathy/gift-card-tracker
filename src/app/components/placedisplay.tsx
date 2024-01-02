@@ -22,6 +22,13 @@ function CardDisplay(card:any, index:any) {
 
   const [data, setData] = useState([])
 
+  const handleDelete = async () => {
+    const docRef = doc(db, 'data', card.card.place)
+    await updateDoc(docRef, {
+      cards: arrayRemove(card.card)
+    })
+  }
+
   // console.log(place)
 
   // useEffect(() => {
@@ -40,7 +47,7 @@ function CardDisplay(card:any, index:any) {
       </div>
       <div className="flex gap-4 text-base">
         <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
-        <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
+        <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
       </div>
     </div>
   )
