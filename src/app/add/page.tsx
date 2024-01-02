@@ -27,10 +27,10 @@ export default function Add() {
 
     if (docSnap.exists()) {
       await updateDoc(docRef, {
-        cards: arrayUnion({id: card.id, amount: card.amount})
+        cards: arrayUnion({id: card.id, amount: card.amount, place: card.place})
       })
     } else {
-      const cards = [{id: card.id, amount: card.amount}]
+      const cards = [{id: card.id, amount: card.amount, place: card.place}]
       await setDoc(doc(db, 'data', card.place), {cards})
     }
   }
