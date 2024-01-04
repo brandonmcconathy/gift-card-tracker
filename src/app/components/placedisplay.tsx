@@ -3,6 +3,7 @@
 import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore"
 import { db } from "../../../lib/firebase"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function PlaceDisplay(props:any) {
 
@@ -21,12 +22,15 @@ export default function PlaceDisplay(props:any) {
 function CardDisplay(card:any, index:any) {
 
   const [data, setData] = useState([])
+  const router = useRouter()
 
   const handleDelete = async () => {
     const docRef = doc(db, 'data', card.card.place)
     await updateDoc(docRef, {
       cards: arrayRemove(card.card)
     })
+    alert(`${card.place} - ${card.id} has been deleted`)
+    router.refresh()
   }
 
   // console.log(place)
