@@ -33,6 +33,10 @@ function CardDisplay(card:any, index:any) {
     router.refresh()
   }
 
+  const handleUpdate = () => {
+
+  }
+
   // console.log(place)
 
   // useEffect(() => {
@@ -50,7 +54,7 @@ function CardDisplay(card:any, index:any) {
         <h1>${card.card.amount}</h1>
       </div>
       <div className="flex gap-4 text-base">
-        <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
+        <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
         <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
       </div>
     </div>
