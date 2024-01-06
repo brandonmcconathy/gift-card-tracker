@@ -1,10 +1,10 @@
 'use client'
 
-import { arrayRemove, arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore"
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore"
 import { db } from "../../../lib/firebase"
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState } from "react"
 import CheckEmpty from "../../../utils/checkempty"
+import Reload from "../../../utils/reload"
 
 export default function PlaceDisplay(props:any) {
 
@@ -25,7 +25,6 @@ function CardDisplay(card:any, index:any) {
   const [newAmount, setNewAmount] = useState('')
   const [update, setUpdate] = useState(false)
   const [remove, setRemove] = useState(false)
-  const router = useRouter()
 
   const handleDelete = async () => {
     const docRef = doc(db, 'data', card.card.place)
@@ -33,8 +32,8 @@ function CardDisplay(card:any, index:any) {
       cards: arrayRemove(card.card)
     })
     alert(`Card has been deleted`)
-    CheckEmpty(card.card.place)
-    router.refresh()
+    await CheckEmpty(card.card.place)
+    Reload()
   }
 
   const amountChange = (event:any) => {
