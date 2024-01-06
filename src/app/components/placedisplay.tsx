@@ -21,7 +21,7 @@ export default function PlaceDisplay(props:any) {
 
 function CardDisplay(card:any, index:any) {
 
-  const [data, setData] = useState([])
+  const [newAmount, setNewAmount] = useState('')
   const [update, setUpdate] = useState(false)
   const router = useRouter()
 
@@ -30,12 +30,20 @@ function CardDisplay(card:any, index:any) {
     await updateDoc(docRef, {
       cards: arrayRemove(card.card)
     })
-    alert(`${card.place} - ${card.id} has been deleted`)
+    alert(`Card has been deleted`)
     router.refresh()
+  }
+
+  const amountChange = (event:any) => {
+    setNewAmount(event.value)
   }
 
   const handleUpdate = () => {
     setUpdate(true)
+  }
+
+  const handleSubmit = () => {
+    setUpdate(false)
   }
 
   // console.log(place)
@@ -54,12 +62,12 @@ function CardDisplay(card:any, index:any) {
         <h1>{card.card.id}:</h1>
         <h1>${card.card.amount}</h1>
       </div>
-      <div className="flex gap-4 text-base">
+      <div className="flex items-center justify-center gap-4 text-base">
         {!update ? <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
-          <div className="flex gap-5">
-            <input className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" />
+          <form className="flex items-center justify-center gap-5" onSubmit={handleSubmit}>
+            <input name='amount' value={newAmount} onChange={amountChange} className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" required />
             <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
-          </div>}
+          </form>}
         <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
       </div>
     </div>
