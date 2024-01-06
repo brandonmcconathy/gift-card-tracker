@@ -22,6 +22,7 @@ export default function PlaceDisplay(props:any) {
 function CardDisplay(card:any, index:any) {
 
   const [data, setData] = useState([])
+  const [update, setUpdate] = useState(false)
   const router = useRouter()
 
   const handleDelete = async () => {
@@ -34,7 +35,7 @@ function CardDisplay(card:any, index:any) {
   }
 
   const handleUpdate = () => {
-
+    setUpdate(true)
   }
 
   // console.log(place)
@@ -54,7 +55,11 @@ function CardDisplay(card:any, index:any) {
         <h1>${card.card.amount}</h1>
       </div>
       <div className="flex gap-4 text-base">
-        <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
+        {!update ? <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
+          <div className="flex gap-5">
+            <input />
+            <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
+          </div>}
         <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
       </div>
     </div>
