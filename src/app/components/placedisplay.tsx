@@ -42,6 +42,7 @@ function CardDisplay(card:any, index:any) {
 
   const switchUpdate = () => {
     setUpdate((prevState) => !prevState)
+    setRemove(false)
   }
 
   const switchRemove = () => {
@@ -62,6 +63,7 @@ function CardDisplay(card:any, index:any) {
     await updateDoc(docRef, {
       cards: arrayUnion({id: card.card.id, amount: newAmount, place: card.card.place})
     })
+    alert(`Card has been updated`)
     Reload()
   }
 
