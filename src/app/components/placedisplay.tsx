@@ -62,6 +62,7 @@ function CardDisplay(card:any, index:any) {
     await updateDoc(docRef, {
       cards: arrayUnion({id: card.card.id, amount: newAmount, place: card.card.place})
     })
+    Reload()
   }
 
   return(
