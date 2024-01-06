@@ -4,6 +4,7 @@ import { arrayRemove, arrayUnion, doc, getDoc, updateDoc } from "firebase/firest
 import { db } from "../../../lib/firebase"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import CheckEmpty from "../../../utils/checkempty"
 
 export default function PlaceDisplay(props:any) {
 
@@ -32,6 +33,7 @@ function CardDisplay(card:any, index:any) {
       cards: arrayRemove(card.card)
     })
     alert(`Card has been deleted`)
+    CheckEmpty(card.card.place)
     router.refresh()
   }
 
