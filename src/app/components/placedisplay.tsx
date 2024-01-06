@@ -39,7 +39,7 @@ function CardDisplay(card:any, index:any) {
   }
 
   const switchUpdate = () => {
-    setUpdate(true)
+    setUpdate((prevState) => !prevState)
   }
 
   const handleSubmit = async (event:any) => {
@@ -65,12 +65,16 @@ function CardDisplay(card:any, index:any) {
         <h1>${card.card.amount}</h1>
       </div>
       <div className="flex items-center justify-center gap-4 text-base">
-        {!update ? <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
-          <form className="flex items-center justify-center gap-5" onSubmit={handleSubmit}>
-            <input name='amount' value={newAmount} onChange={amountChange} className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" required />
-            <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
-          </form>}
-        <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
+        {!update ? 
+        <div className="flex items-center justify-center gap-5">
+          <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
+          <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
+        </div> : 
+        <form className="flex items-center justify-center gap-5" onSubmit={handleSubmit}>
+          <input name='amount' value={newAmount} onChange={amountChange} className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" required />
+          <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
+          <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Cancel</button>
+        </form>}
       </div>
     </div>
   )
