@@ -1,6 +1,6 @@
 'use client'
 
-import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore"
+import { arrayRemove, arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore"
 import { db } from "../../../lib/firebase"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
@@ -35,26 +35,28 @@ function CardDisplay(card:any, index:any) {
   }
 
   const amountChange = (event:any) => {
-    setNewAmount(event.value)
+    setNewAmount(event.target.value)
   }
 
-  const handleUpdate = () => {
+  const switchUpdate = () => {
     setUpdate(true)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event:any) => {
+    event.preventDefault()
     setUpdate(false)
+    updateDB(card, newAmount)
   }
 
-  // console.log(place)
-
-  // useEffect(() => {
-  //   const getDBData = async () => {
-  //     const data = await getDoc(doc(db, 'data', place))
-  //     console.log(data.data())
-  //   }
-  //   getDBData()
-  // },[])
+  const updateDB = async (card:any, newAmount:any) => {
+    const docRef = doc(db, 'data', card.card.place)
+    await updateDoc(docRef, {
+      cards: arrayRemove(card.card)
+    })
+    await updateDoc(docRef, {
+      cards: arrayUnion({id: card.card.id, amount: newAmount, place: card.card.place})
+    })
+  }
 
   return(
     <div className="flex justify-center items-center gap-10 text-lg">
@@ -63,7 +65,7 @@ function CardDisplay(card:any, index:any) {
         <h1>${card.card.amount}</h1>
       </div>
       <div className="flex items-center justify-center gap-4 text-base">
-        {!update ? <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
+        {!update ? <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
           <form className="flex items-center justify-center gap-5" onSubmit={handleSubmit}>
             <input name='amount' value={newAmount} onChange={amountChange} className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" required />
             <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
