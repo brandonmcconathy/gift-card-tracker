@@ -42,15 +42,15 @@ return(
     <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-5 text-lg">
       <div className="flex flex-col">
         <label className="text-white">Place:</label>
-        <input type="text" name='place' value={card.place} onChange={handleChange} required className="rounded-lg px-2 py-1 box-pop" />
+        <input type="text" name='place' value={card.place} onChange={handleChange} required className="outline-none rounded-xl px-4 py-2 shadow-xl focus:ring focus:ring-amber-200 transition duration-300" />
       </div>
       <div className="flex flex-col">
         <label className="text-white">Last 4 of card:</label>
-        <input type="text" name='id' value={card.id} onChange={handleChange} required className="rounded-lg px-2 py-1 box-pop" />
+        <input type="text" name='id' value={card.id} onChange={handleChange} required className="outline-none rounded-xl px-4 py-2 shadow-xl focus:ring focus:ring-amber-200 transition duration-300" />
       </div>
       <div className="flex flex-col">
         <label className="text-white">Amount:</label>
-        <input type="text" name='amount' value={card.amount} onChange={handleChange} required className="rounded-lg px-2 py-1 box-pop" />
+        <input type="text" name='amount' value={card.amount} onChange={handleChange} required className="outline-none rounded-xl px-4 py-2 shadow-xl focus:ring focus:ring-amber-200 transition duration-300" />
       </div>
       <button className="mb-10 py-1 px-2 mt-5 bg-amber-200 rounded-xl text-lg font-semibold transition duration-500 hover:bg-amber-400" >Submit</button>
     </form>

@@ -57,7 +57,7 @@ function CardDisplay(card:any, index:any) {
       <div className="flex gap-4 text-base">
         {!update ? <button onClick={handleUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button> : 
           <div className="flex gap-5">
-            <input />
+            <input className="outline-none rounded-xl w-32 px-4 py-2 shadow-xl focus:ring focus:ring-amber-400 transition duration-300" placeholder="New amount" />
             <button className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Submit</button>
           </div>}
         <button onClick={handleDelete} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Remove</button>
