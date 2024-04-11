@@ -11,7 +11,7 @@ export default function PlaceDisplay(props:any) {
   const {place, cards} = props
 
   return(
-    <div className="bg-amber-200 w-11/12 pb-5 rounded-xl box-pop">
+    <div className="bg-amber-200 w-11/12 pb-5 px-2 rounded-xl box-pop">
       <h1 className="text-center my-4 text-xl font-bold">{place}</h1>
       <div className="flex flex-col gap-3">
         {cards.cards.map((card:any, index:any) => <CardDisplay card={card} index={index} key={card.id} />)}
