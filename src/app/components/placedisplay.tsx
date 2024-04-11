@@ -67,8 +67,6 @@ function CardDisplay(card:any, index:any) {
     Reload()
   }
 
-  // Test
-
   return(
     <div className="flex justify-center items-center gap-10 text-lg">
       <div className="flex justify-center gap-2 font-semibold">
