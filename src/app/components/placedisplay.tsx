@@ -91,7 +91,7 @@ function CardDisplay(card:any, index:any) {
           </form>}
         </div>
       </div>
-      <hr className="border-black md:hidden"></hr>
+      <hr className="border-amber-400 md:hidden"></hr>
     </>
   )
 }
