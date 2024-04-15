@@ -69,12 +69,12 @@ function CardDisplay(card:any, index:any) {
 
   return(
     <>
-      <div className="flex justify-center items-center gap-10 text-lg">
+      <div className="flex flex-col justify-center items-center gap-2 text-lg sm:gap-10 sm:flex-row">
         <div className="flex justify-center gap-2 font-semibold">
           <h1>{card.card.id}:</h1>
           <h1>${card.card.amount}</h1>
         </div>
-        <div className="flex items-center justify-center gap-4 text-base">
+        <div className="flex items-center justify-center gap-4 text-sm">
           {!update ? 
           <div className="flex flex-wrap items-center justify-center gap-5">
             <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
