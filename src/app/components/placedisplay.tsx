@@ -74,7 +74,7 @@ function CardDisplay(card:any, index:any) {
           <h1>{card.card.id}:</h1>
           <h1>${card.card.amount}</h1>
         </div>
-        <div className="flex items-center justify-center gap-4 text-sm">
+        <div className="flex items-center justify-center gap-4 text-sm sm:text-base">
           {!update ? 
           <div className="flex flex-wrap items-center justify-center gap-5">
             <button onClick={switchUpdate} className="bg-amber-400 px-2 py-1 rounded-xl box-pop font-semibold">Update</button>
@@ -91,7 +91,7 @@ function CardDisplay(card:any, index:any) {
           </form>}
         </div>
       </div>
-      <hr className="border-amber-400 md:hidden"></hr>
+      <hr className="border-amber-400 sm:hidden"></hr>
     </>
   )
 }
